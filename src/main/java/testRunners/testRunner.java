@@ -6,7 +6,7 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
-        features = {"src/test/resources/parallel"},
+        features = {"src/test/java/features"},
         glue = {"parallel"},
         plugin = {
                 "summary", "pretty", "html:Reports/CucumberReport/Reports.html",

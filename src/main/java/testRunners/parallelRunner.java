@@ -6,8 +6,8 @@ import org.testng.annotations.DataProvider;
 
 public class parallelRunner {
     @CucumberOptions(
-            features = {"src/test/resources/parallel"},
-            glue = {"parallel"},
+            features = {"src/test/java/features"},
+            glue = {"stepDefinations","util"},
             plugin = {
                     "summary", "pretty", "html:Reports/CucumberReport/Reports.html",
                     "json:Reports/CucumberReport/Report",

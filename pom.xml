@@ -75,7 +75,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.12.4</version>
                 <configuration>
-                    <suiteXmlFiles>src/test/resources/testsuite/GridParallelRun.xml</suiteXmlFiles>
+                    <suiteXmlFiles>src/test/resources/testsuites/SingleChrome.xml</suiteXmlFiles>
                 </configuration>
             </plugin>
         </plugins>

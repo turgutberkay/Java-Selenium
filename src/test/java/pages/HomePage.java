@@ -1,7 +1,7 @@
-package com.pages;
+package pages;
 
-import com.qa.factory.DriverFactory;
-import com.qa.util.ElementUtil;
+import util.DriverFactory;
+import util.ElementUtil;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;

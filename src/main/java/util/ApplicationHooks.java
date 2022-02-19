@@ -1,4 +1,4 @@
-package parallel;
+package util;
 
 import java.time.Duration;
 import java.util.Properties;
@@ -6,14 +6,12 @@ import java.util.Properties;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import com.qa.factory.DriverFactory;
-import com.qa.util.ConfigReader;
+import util.DriverFactory;
+import util.ConfigReader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.testng.Reporter;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
 
 public class ApplicationHooks {
 

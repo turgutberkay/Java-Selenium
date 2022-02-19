@@ -1,6 +1,5 @@
-package com.qa.util;
+package util;
 
-import com.qa.factory.DriverFactory;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
