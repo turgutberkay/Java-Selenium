@@ -7,7 +7,7 @@ import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
         features = {"src/test/java/features"},
-        glue = {"parallel"},
+        glue = {"stepDefinations","util"},
         plugin = {
                 "summary", "pretty", "html:Reports/CucumberReport/Reports.html",
                 "json:Reports/CucumberReport/Report",
@@ -15,7 +15,7 @@ import org.testng.annotations.DataProvider;
         },
         monochrome = true
 )
-public class testRunner extends AbstractTestNGCucumberTests {
+public class singleRunner extends AbstractTestNGCucumberTests {
     @Override
     @DataProvider()
     public Object[][] scenarios() {
