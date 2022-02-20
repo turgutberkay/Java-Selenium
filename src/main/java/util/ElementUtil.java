@@ -34,6 +34,10 @@ public class ElementUtil {
         }
     }
 
+    /**
+     *
+     * @param webelement
+     */
     public void click(WebElement webelement) {
         try {
             WebElement element = wait.until(ExpectedConditions.elementToBeClickable(webelement));
