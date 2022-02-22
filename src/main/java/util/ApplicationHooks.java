@@ -36,9 +36,8 @@ public class ApplicationHooks {
             driver = driverFactory.init_driver(browserName);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitlyWait));
             driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(pageLoadTimeout));
-
         } catch (Exception e) {
-            System.out.println("Lütfen bir sayi gir.");
+            System.out.println("Please enter a number");
         }
     }
 

@@ -22,6 +22,7 @@ public class DriverFactory {
     public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
 
     public WebDriver init_driver(String browser) throws MalformedURLException {
+        String port = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("port");
         //FOR JUST RUN
         if (browser.equals("chrome")) {
             WebDriverManager.chromedriver().setup();
@@ -35,17 +36,8 @@ public class DriverFactory {
         } else if (browser.equals("opera")) {
             tlDriver.set(new OperaDriver());
         }
-        //FOR HEADLESS RUN
-        else if (browser.equals("chrome-headless")) {
-            WebDriverManager.chromedriver().setup();
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--headless");
-            options.addArguments("disable-gpu");
-            tlDriver.set(new ChromeDriver(options));
-        }
         //FOR SELENİUM GRİD RUN
-        String port = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("port");
-        if (browser.equals("chrome-grid")) {
+        else if (browser.equals("chrome-grid")) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("start-maximized");
             tlDriver.set(new RemoteWebDriver(new URL(port), options));
@@ -57,16 +49,28 @@ public class DriverFactory {
             EdgeOptions options = new EdgeOptions();
             options.addArguments("start-maximized");
             tlDriver.set(new RemoteWebDriver(new URL(port), options));
-        } else {
+        }
+        //FOR DOCKERIZE RUN
+        else if (browser.equals("chrome-dockerize")) {
+            System.setProperty("webdriver.chrome.driver","/usr/local/bin/chromedriver");
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--headless");
+            options.addArguments("--no-sandbox");
+            System.setProperty("webdriver.chrome.args", "--disable-logging");
+            System.setProperty("webdriver.chrome.silentOutput", "true");
+            options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+            options.addArguments("disable-infobars"); // disabling infobars
+            options.addArguments("--disable-extensions"); // disabling extensions
+            options.addArguments("--disable-gpu"); // applicable to windows os only
+            options.addArguments("window-size=1024,768"); // Bypass OS security model
+            tlDriver.set(new ChromeDriver(options));
+        }else {
             System.out.println("Please pass the correct browser value: " + browser);
         }
-
         getDriver().manage().deleteAllCookies();
         getDriver().manage().window().maximize();
         return getDriver();
     }
 
-    public static synchronized WebDriver getDriver() {
-        return tlDriver.get();
-    }
+    public static synchronized WebDriver getDriver() {return tlDriver.get();}
 }

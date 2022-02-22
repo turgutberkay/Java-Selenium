@@ -37,6 +37,12 @@ RUN curl https://dl-ssl.google.com/linux/linux_signing_key.pub -o /tmp/google.pu
     && apt-get -y update && apt-get install -y google-chrome-stable
 
 
+#INSTALL CHROMEDRIVER
+
+RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip
+RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
+
+
 #INSTALL MAVEN---------------
 RUN wget --no-verbose -O /tmp/apache-maven-3.8.1.tar.gz http://archive.apache.org/dist/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz
 RUN tar xzf /tmp/apache-maven-3.8.1.tar.gz -C /opt/

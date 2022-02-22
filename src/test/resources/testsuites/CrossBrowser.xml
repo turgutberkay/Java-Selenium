@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="deneme" data-provider-thread-count="2" parallel="tests" thread-count="2">
+<suite name="CrossBrowser" data-provider-thread-count="1" parallel="tests" thread-count="2">
     <test name="ChromeTest">
-        <parameter name="browser" value="chrome-grid"/>
+        <parameter name="browser"  value="chrome-grid"/>
         <parameter name="port" value="http://localhost:4444"/>
         <classes>
             <class name="testRunners.parallelRunner"/>

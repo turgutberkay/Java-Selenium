@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="deneme" data-provider-thread-count="1" parallel="tests" thread-count="2">
+<suite name="ParallelDifferentVersion" data-provider-thread-count="1" parallel="tests" thread-count="2">
     <test name="ChromeTest1">
         <parameter name="browser" value="chrome-grid"/>
         <parameter name="port" value="http://localhost:4444"/>
